@@ -3,6 +3,8 @@ package com.gonzomonk.gonzoCards.controller;
 import com.gonzomonk.gonzoCards.entity.Card;
 import com.gonzomonk.gonzoCards.service.CardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,8 +32,10 @@ public class CardController {
     }
 
     @PostMapping
-    public Card createCard(@RequestBody Card card) {
-        return cardService.createCard(card);
+    public ResponseEntity<Card> createCard(@RequestBody Card card) {
+        return ResponseEntity.
+                status(HttpStatus.CREATED).
+                body(cardService.createCard(card));
     }
 
     @PutMapping("/{id}")
@@ -40,8 +44,9 @@ public class CardController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCard(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteCard(@PathVariable Long id) {
         cardService.deleteCard(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
