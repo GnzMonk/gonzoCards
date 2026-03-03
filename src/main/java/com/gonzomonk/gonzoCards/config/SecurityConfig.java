@@ -1,4 +1,4 @@
-package com.gonzomonk.gonzoCards.configure;
+package com.gonzomonk.gonzoCards.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,5 +1,7 @@
 package com.gonzomonk.gonzoCards.controller;
 
+import com.gonzomonk.gonzoCards.dto.CardRequestDto;
+import com.gonzomonk.gonzoCards.dto.CardResponseDto;
 import com.gonzomonk.gonzoCards.entity.Card;
 import com.gonzomonk.gonzoCards.service.CardService;
 import lombok.RequiredArgsConstructor;
@@ -17,30 +19,32 @@ public class CardController {
     private final CardService cardService;
 
     @GetMapping("/rand")
-    public Card showRandCard() {
-        return cardService.getRandomCard();
+    public ResponseEntity<CardResponseDto> showRandCard() {
+        return ResponseEntity.ok(cardService.getRandomCard());
     }
 
     @GetMapping
-    public List<Card> getAllCards(){
-        return cardService.getAllCards();
+    public ResponseEntity<List<CardResponseDto>> getAllCards(){
+        return ResponseEntity.ok(cardService.getAllCards());
     }
 
     @GetMapping("/{id}")
-    public Card getCard(@PathVariable Long id) {
-        return cardService.getCardById(id);
+    public ResponseEntity<CardResponseDto> getCard(@PathVariable Long id) {
+        return ResponseEntity.ok(cardService.getCardById(id));
     }
 
     @PostMapping
-    public ResponseEntity<Card> createCard(@RequestBody Card card) {
+    public ResponseEntity<CardResponseDto> createCard(@RequestBody CardRequestDto cardRequestDto) {
         return ResponseEntity.
                 status(HttpStatus.CREATED).
-                body(cardService.createCard(card));
+                body(cardService.createCard(cardRequestDto));
     }
 
     @PutMapping("/{id}")
-    public Card updateCard(@PathVariable Long id, @RequestBody Card card) {
-        return cardService.updateCard(id, card);
+    public ResponseEntity<CardResponseDto> updateCard(
+            @PathVariable Long id,
+            @RequestBody CardRequestDto cardRequestDto) {
+        return ResponseEntity.ok(cardService.updateCard(id, cardRequestDto));
     }
 
     @DeleteMapping("/{id}")
