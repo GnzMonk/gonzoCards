@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CardResponseDto {
-    public Long id;
-    public String frontSide;
-    public String backSide;
-    public String description;
+    private Long id;
+    private String frontSide;
+    private String backSide;
+    private String description;
 
 }

@@ -5,7 +5,6 @@ import com.gonzomonk.gonzoCards.dto.CardResponseDto;
 import com.gonzomonk.gonzoCards.entity.Card;
 import org.mapstruct.Mapper;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
 @Mapper(componentModel = "spring")

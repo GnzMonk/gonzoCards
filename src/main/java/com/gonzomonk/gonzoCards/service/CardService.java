@@ -32,7 +32,7 @@ public class CardService {
         Page<Card> cardPage = cardRepository.findAll(PageRequest.of(randIndex, 1));
         return cardMapper.toDto(cardPage.getContent().getFirst());
     }
-    
+
     public List<CardResponseDto> getAllCards() {
         return cardMapper.toDtoList(cardRepository.findAll());
     }
